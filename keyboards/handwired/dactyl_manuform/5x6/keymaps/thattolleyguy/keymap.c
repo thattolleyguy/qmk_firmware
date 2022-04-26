@@ -30,6 +30,7 @@ enum dactyl_layers {
 #define KC_CBN LCTL(KC_F12) //Clipboard previous
 #define KC_DSKD LCA(KC_DOWN)
 #define KC_DSKU LCA(KC_UP)
+#define KC_TACT LGUI(KC_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -59,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      XXXXXXX, KC_VOLU, KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT,                            XXXXXXX, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_MUTE, KC_VOLD, RGB_M_SW,RGB_TOG, XXXXXXX, XXXXXXX,                            XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, XXXXXXX,
+     KC_MUTE, KC_VOLD, RGB_M_SW,RGB_TOG, XXXXXXX, KC_TACT,                            XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD, XXXXXXX,                            XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_EQL,  KC_PSCR,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ┌────────┼────────┼────────┼────────┼────────┼────────┤

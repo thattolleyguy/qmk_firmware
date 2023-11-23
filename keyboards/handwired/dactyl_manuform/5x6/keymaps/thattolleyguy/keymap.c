@@ -28,8 +28,8 @@ enum dactyl_layers {
 
 #define KC_CBP LCTL(KC_F11) //Clipboard previous
 #define KC_CBN LCTL(KC_F12) //Clipboard previous
-#define KC_DSKD LCA(KC_DOWN)
-#define KC_DSKU LCA(KC_UP)
+#define KC_DSKR LCA(KC_RIGHT)
+#define KC_DSKL LCA(KC_LEFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ┌────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┼────────┼────────┼────────┼────────┘                          └────────┴────────┼────────┼────────┼────────┼────────┘
-                       KC_DSKU, KC_DSKD,                                                                KC_PGUP, KC_PGDN,
+                       KC_DSKL, KC_DSKR,                                                                KC_PGUP, KC_PGDN,
   //                  └────────┴────────┘        ┌────────┬────────┐        ┌────────┬────────┐        └────────┴────────┘
                                                   LOWER,   KC_ENT,           KC_SPC,  RAISE,
   //                                             ├────────┼────────┤        ├────────┼────────┤
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ┌────────┼────────┼────────┼────────┼────────┼────────┤
      _______, RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD,XXXXXXX,                            XXXXXXX, KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
   //└────────┴────────┼────────┼────────┼────────┼────────┘                          └────────┴────────┼────────┼────────┼────────┼────────┘
-                       KC_PGUP, KC_PGDN,                                                                KC_P0,   Debug,
+                       KC_PGUP, KC_PGDN,                                                                KC_P0,   XXXXXXX,
   //                  └────────┴────────┘        ┌────────┬────────┐        ┌────────┬────────┐        └────────┴────────┘
                                                   _______, _______,          _______,  _______,
   //                                             ├────────┼────────┤        ├────────┼────────┤

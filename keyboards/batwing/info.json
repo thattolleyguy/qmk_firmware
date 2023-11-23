@@ -1,6 +1,5 @@
 {
     "manufacturer": "Lostphoenix",
-    "url": "https://notyet.io",
     "maintainer": "Lostphoenix",
     "usb": {
         "vid": "0xCB10"

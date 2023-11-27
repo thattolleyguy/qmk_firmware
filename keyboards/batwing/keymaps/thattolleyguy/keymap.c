@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┐                  ┌────────┬────────┬────────┬────────┬────────┐
-     KC_ESC,  XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, RGB_VAD, RGB_VAI,   
+     KC_ESC,  XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX,                    XXXXXXX, RGB_RMOD,RGB_MOD, RGB_VAD, RGB_VAI,   
   //├────────┼────────┼────────┼────────┼────────┤                  ├────────┼────────┼────────┼────────┼────────┤
      XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS,                     KC_PGUP, KC_HOME, KC_BSPC, RGB_SAD, RGB_SAI,
   //├────────┼────────┼────────┼────────┼────────┐                  ┌────────┼────────┼────────┼────────┼────────┤
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┤                  ├────────┼────────┼────────┼────────┼────────┤
      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, 
   //├────────┼────────┼────────┼────────┼────────┐                  ┌────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, XXXXXXX, XXXXXXX, RGB_RMOD,RGB_MOD,                    RGB_M_SW,RGB_M_R, XXXXXXX, XXXXXXX, XXXXXXX,
+     KC_CAPS, XXXXXXX, DT_PRNT, DT_DOWN, DT_UP,                      RGB_M_SW,RGB_M_R, XXXXXXX, XXXXXXX, XXXXXXX,
   //└────────┴────────┴───┬────┴───┬────┴───┬────┴───┐         ┌────┴───┬────┴───┬────┴───┬────┴────────┴────────┘
                            _______, _______, _______,           XXXXXXX, XXXXXXX, _______
                        // └────────┴────────┴────────┘         └────────┴────────┴────────┘
@@ -140,7 +140,27 @@ bool oled_task_user(void) {
     oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
     oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
     oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+    oled_write_P(PSTR("\n"), false);
+    
+    static char rgbStatusLine1[26] = {0};
+    snprintf(rgbStatusLine1, sizeof(rgbStatusLine1), "RGB Mode: %d", rgblight_get_mode());
+    oled_write_ln(rgbStatusLine1, false);
+    static char rgbStatusLine2[26] = {0};
+    snprintf(rgbStatusLine2, sizeof(rgbStatusLine2), "h:%d s:%d v:%d", rgblight_get_hue(), rgblight_get_sat(), rgblight_get_val());
+    oled_write_ln(rgbStatusLine2, false);
     
     return false;
 }
 #endif
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case FS_SHFT:
+        case Z_SHFT:
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}

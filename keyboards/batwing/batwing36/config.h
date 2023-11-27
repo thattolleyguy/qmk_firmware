@@ -13,6 +13,8 @@
 
 #define OLED_DISPLAY_128X64 
 
+#define PERMISSIVE_HOLD_PER_KEY
+
 
 
 
